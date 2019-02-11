@@ -65,11 +65,27 @@ export class LoginPage {
   	});
     loading.present();
     
-    this._usuarioProv.verificaUsuario(clave).then()
+    this._usuarioProv.verificaUsuario(clave).then(
+      existe => {
+        loading.dismiss();
+        if (existe) {
+          
+          this.slides.lockSwipes(false);
+          this.slides.freeMode = true;
+          this.slides.slideNext();
+          this.slides.lockSwipes(true);
+          this.slides.freeMode = false;
+        } else {
+          this.alertCtrl.create({
+            title:'Usuario Incorrecto',
+            subTitle:'Hable con el administrador o intente de nuevo',
+            buttons: ['Aceptar']
+          }).present();
+        }
+      }
+    )
 
-  	setTimeout(()=>{
-  	loading.dismiss();
-  }, 3000);
+
   }//fin verificar usuario
 
   

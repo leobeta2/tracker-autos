@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {LoginPage} from '../pages/login/login'
 import { UsuarioProvider } from '../providers/usuario/usuario';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 //firebase
@@ -25,7 +26,8 @@ import { firebaseconfig } from '../config/firebase.config';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseconfig),
-    AngularFirestoreModule 
+    AngularFirestoreModule,
+    IonicStorageModule.forRoot() 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
